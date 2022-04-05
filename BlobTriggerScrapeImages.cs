@@ -18,7 +18,7 @@ namespace scrape
     public static class BlobTriggerScrapeImages
     {
         [FunctionName("BlobTriggerScrapeImages")]
-        public static void Run([BlobTrigger("scapedimages/meta_data_intellispec/{name}", Connection = "AZURE_STORAGE_CONNECTION_STRING")] Stream myBlob, string name, ILogger log)
+        public static void Run([BlobTrigger("scapedimages/test/{name}", Connection = "AZURE_STORAGE_CONNECTION_STRING")] Stream myBlob, string name, ILogger log)
         {
             DataTable dt = new DataTable();
             List<string> Headers = new List<string>();
@@ -117,7 +117,7 @@ namespace scrape
 
                 DataRow[] result = dt_link.Select("report_id not  in (" + result_class_from_report + ")");
                 Console.WriteLine("result:" + result.Count());
-                IWebDriver driver = new ChromeDriver("C:/Users/nhlr/Anaconda-22-Jun-2020/Scripts");
+                IWebDriver driver = new ChromeDriver("C:/Users/Scripts");
 
                 
                 foreach (DataRow row in result)
